@@ -1,4 +1,4 @@
-# Wireless Alt-control Games
+# Making a Wireless Alt-Control Game 
 
 ## Wiring the Pico
 
@@ -20,6 +20,8 @@ Open your command line and install the following node packages using npm:
 Express: `npm i express`
 Socket.io `npm i socket.io`
 MQTT: `npm i mqtt`
+
+
 
 
 
