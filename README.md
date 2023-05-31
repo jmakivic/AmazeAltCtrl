@@ -34,7 +34,11 @@ This will get you started on setting up your development environment for the pic
 
 Once you have set up your Pico dev environment, upload main.py to your Pico. Remember to use the ssid and password for your own wifi network. 
 Access the HiveMQ websocket client: https://www.hivemq.com/demos/websocket-client/
-In your main.py, you will see that 
+Follow this example to see how you can send data from the Pico to the MQTT websocket client: https://www.tomshardware.com/how-to/send-and-receive-data-raspberry-pi-pico-w-mqtt
+
+### Taking it further
+
+
 
 
 
