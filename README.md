@@ -21,7 +21,22 @@ Express: `npm i express`
 Socket.io `npm i socket.io`
 MQTT: `npm i mqtt`
 
-## 
+### Setting up your dev environment
+
+This will get you started on setting up your development environment for the pico. 
+
+1. Install Thonny
+2. Press the BOOTSEL button on the Pico as you connect it to your laptop. Upload the UF2 file from the AmazeAltCtrl folder to the CIRCUITPY drive that pops up. 
+3. Configure your Pico in Thonny. View a guide on how to do this [here](https://www.tomshardware.com/how-to/raspberry-pi-pico-setup#:~:text=Connect%20the%20Raspberry%20Pi%20Pico,Click%20Ok%20to%20close.) .
+4. Once you have configured your Pico, use Thonny to add a folder inside of your Pico titled lib. Within lib make a folder called umqtt. Place the robust.py and simple.py files into the lib folder. 
+
+### Connecting your Pico to the MQTT server
+
+Once you have set up your Pico dev environment, upload main.py to your Pico. Remember to use the ssid and password for your own wifi network. 
+Access the HiveMQ websocket client: https://www.hivemq.com/demos/websocket-client/
+In your main.py, you will see that 
+
+
 
 
 
