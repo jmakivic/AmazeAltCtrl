@@ -38,9 +38,7 @@ Follow this example to see how you can send data from the Pico to the MQTT webso
 
 ### Taking it further
 
-
-
-
+Take a look at altimeter_sample.py, webserver.js in webGame_AMAZE, and index.html in the public folder to see how I send accelerometer data from a Pico to a webserver and display it on a webpage. Take a look at the pdf to see more tutorials and examples on how you can use wifi to send data from your pico to a webserver. 
 
 
 
