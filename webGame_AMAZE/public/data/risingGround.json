@@ -1,0 +1,92 @@
+{"frames": [
+
+{
+	"filename": "risingGround1.png",
+	"frame": {"x":0,"y":0,"w":1000,"h":333},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1000,"h":333},
+	"sourceSize": {"w":1000,"h":333}
+},
+{
+	"filename": "risingGround2.png",
+	"frame": {"x":1000,"y":0,"w":1000,"h":333},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1000,"h":333},
+	"sourceSize": {"w":1000,"h":333}
+},
+{
+	"filename": "risingGround3.png",
+	"frame": {"x":0,"y":333,"w":1000,"h":333},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1000,"h":333},
+	"sourceSize": {"w":1000,"h":333}
+},
+{
+	"filename": "risingGround4.png",
+	"frame": {"x":1000,"y":333,"w":1000,"h":333},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1000,"h":333},
+	"sourceSize": {"w":1000,"h":333}
+},
+{
+	"filename": "risingGround5.png",
+	"frame": {"x":0,"y":666,"w":1000,"h":333},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1000,"h":333},
+	"sourceSize": {"w":1000,"h":333}
+},
+{
+	"filename": "risingGround6.png",
+	"frame": {"x":1000,"y":666,"w":1000,"h":333},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1000,"h":333},
+	"sourceSize": {"w":1000,"h":333}
+},
+{
+	"filename": "risingGround7.png",
+	"frame": {"x":0,"y":999,"w":1000,"h":333},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1000,"h":333},
+	"sourceSize": {"w":1000,"h":333}
+},
+{
+	"filename": "risingGround8.png",
+	"frame": {"x":1000,"y":999,"w":1000,"h":333},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1000,"h":333},
+	"sourceSize": {"w":1000,"h":333}
+},
+{
+	"filename": "risingGround9.png",
+	"frame": {"x":0,"y":1332,"w":1000,"h":333},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1000,"h":333},
+	"sourceSize": {"w":1000,"h":333}
+},
+{
+	"filename": "risingGround10.png",
+	"frame": {"x":1000,"y":1332,"w":1000,"h":333},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1000,"h":333},
+	"sourceSize": {"w":1000,"h":333}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "risingGround.png",
+	"format": "RGBA8888",
+	"size": {"w":2000,"h":1665},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:982488d659d070ea3329b74af071f9f2:aa5b3f84f0f811e6215c0b7a401ad23d:af299234599c0bd9de9a0d553f093ede$"
+}
+}

@@ -1,0 +1,12 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-image: url("images/util/background_pattern.png");
+    background-repeat: repeat; 
+   
+  }
+  canvas {
+    display: block;
+  }
+  
+  

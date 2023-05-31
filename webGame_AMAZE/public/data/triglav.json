@@ -1,0 +1,140 @@
+{"frames": [
+
+{
+	"filename": "triglav1.png",
+	"frame": {"x":458,"y":421,"w":171,"h":435},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":37,"y":20,"w":171,"h":435},
+	"sourceSize": {"w":265,"h":500}
+},
+{
+	"filename": "triglav2.png",
+	"frame": {"x":447,"y":862,"w":177,"h":459},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":13,"w":177,"h":459},
+	"sourceSize": {"w":265,"h":500}
+},
+{
+	"filename": "triglav3.png",
+	"frame": {"x":282,"y":862,"w":165,"h":452},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":39,"y":15,"w":165,"h":452},
+	"sourceSize": {"w":265,"h":500}
+},
+{
+	"filename": "triglav4.png",
+	"frame": {"x":775,"y":421,"w":142,"h":441},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":19,"w":142,"h":441},
+	"sourceSize": {"w":265,"h":500}
+},
+{
+	"filename": "triglav5.png",
+	"frame": {"x":173,"y":421,"w":125,"h":431},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":55,"y":22,"w":125,"h":431},
+	"sourceSize": {"w":265,"h":500}
+},
+{
+	"filename": "triglav6.png",
+	"frame": {"x":162,"y":0,"w":144,"h":415},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":27,"w":144,"h":415},
+	"sourceSize": {"w":265,"h":500}
+},
+{
+	"filename": "triglav7.png",
+	"frame": {"x":0,"y":421,"w":173,"h":422},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":36,"y":25,"w":173,"h":422},
+	"sourceSize": {"w":265,"h":500}
+},
+{
+	"filename": "triglav8.png",
+	"frame": {"x":0,"y":0,"w":162,"h":403},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":40,"y":31,"w":162,"h":403},
+	"sourceSize": {"w":265,"h":500}
+},
+{
+	"filename": "triglav9.png",
+	"frame": {"x":613,"y":0,"w":154,"h":421},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":43,"y":25,"w":154,"h":421},
+	"sourceSize": {"w":265,"h":500}
+},
+{
+	"filename": "triglav10.png",
+	"frame": {"x":461,"y":0,"w":152,"h":419},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":44,"y":26,"w":152,"h":419},
+	"sourceSize": {"w":265,"h":500}
+},
+{
+	"filename": "triglav11.png",
+	"frame": {"x":306,"y":0,"w":155,"h":416},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":43,"y":27,"w":155,"h":416},
+	"sourceSize": {"w":265,"h":500}
+},
+{
+	"filename": "triglav12.png",
+	"frame": {"x":298,"y":421,"w":160,"h":432},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":41,"y":21,"w":160,"h":432},
+	"sourceSize": {"w":265,"h":500}
+},
+{
+	"filename": "triglav13.png",
+	"frame": {"x":168,"y":862,"w":114,"h":452},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":59,"y":15,"w":114,"h":452},
+	"sourceSize": {"w":265,"h":500}
+},
+{
+	"filename": "triglav14.png",
+	"frame": {"x":629,"y":421,"w":146,"h":439},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":19,"w":146,"h":439},
+	"sourceSize": {"w":265,"h":500}
+},
+{
+	"filename": "triglav15.png",
+	"frame": {"x":624,"y":862,"w":173,"h":461},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":36,"y":12,"w":173,"h":461},
+	"sourceSize": {"w":265,"h":500}
+},
+{
+	"filename": "triglav16.png",
+	"frame": {"x":0,"y":862,"w":168,"h":451},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":15,"w":168,"h":451},
+	"sourceSize": {"w":265,"h":500}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "triglav.png",
+	"format": "RGBA8888",
+	"size": {"w":917,"h":1323},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:7ab50439ba20a02ae10c12e9ed581283:542c3dbab63279a5e28f39074f003f40:821cc261a11ff5423cfcaba9e3f98fa4$"
+}
+}

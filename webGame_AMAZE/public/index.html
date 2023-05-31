@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+//This is the actual code for my alt-control game. I use p5 to display 
+// sprites on the page
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+    <script src = "./scripts/sprite.js"></script>
+    <script src = "./scripts/staticsprite.js"></script>
+    <script src = "./scripts/utility.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  
+    <title>Game Demo</title>
+</head>
+<body>
+    <main>
+    </main>
+    <!--<script src="sketch.js"></script> -->
+    <script>
+        let socket =io('ws://127.0.0.1:8080',{
+            transports: ["websocket"],
+            pingInterval: 30000,
+            pingTimeout: 1000
+        });
+
+        let triglavSpritesheet, triglavData, nightSpritesheet, nightData;
+        let triglavAnimation =[];
+        let triglavSprites = [];
+    
+        let nightAnimation = [];
+        let nightSprites = [];
+
+        //symbols
+        let symbol1_1, symbol1_2, symbol1_3;
+        let symbolx_small, symbolx_big;
+        let embroidery_out, embroidery_in;
+        //ornament curosor
+        let ornament_spritedata;
+        let ornament_animation=[];
+        let ornament_sprites=[];
+
+        //rising ground animation
+        let risingGroundSheet, risingGroundData;
+        let risingGroundAnimation = [];
+        let risingGroundSprites = [];
+
+        //rising darkness animation
+        let risingDarknessSheet, risingDarknessData;
+        let risingDarknessAnimation =[];
+        let risingDarknessSprites=[];
+
+        //the void animation
+        let theVoidSheet, theVoidData;
+        let theVoidAnimation = [];
+        let theVoidSprites = [];
+
+        //cursors
+        let darknessCursor;
+        
+        //textures
+        let darknessTexture;
+        let darknessTextureCounter = 0;
+
+        let close;
+        let almost;
+        let instructions;
+
+        let input_speed = 2;
+
+        //font variables
+        let _8bit_regular;
+        let _8bit_bold;
+        let chintzy_black;
+        let chintzy_white;
+
+        //story variables
+        let act0 = true;
+        let act1 = false;
+        let act2 = false;
+        let node0 = false;
+        let node1 = false;
+        let node2 = false;
+        let restart = false;
+        let count=0;
+
+        //event marker variables
+
+        let finalSymbolPos;
+        let symbol_coordinate2;
+        let triglavFinalPos;
+        let triglavInitialPos;
+
+        let voidBoundaryX;
+        let voidBoundaryY;
+
+        let embroideryOutX;
+        let embroideryOutY;
+        let embroideryInX;
+        let embroideryInY;
+
+        //filler variables
+        let face1;
+        //preload assets
+        function preload(){
+            //night
+            nightData = loadJSON('data/night.json');
+            nightSpritesheet = loadImage('images/night/night.png');
+
+            //triglav
+            triglavData = loadJSON('data/triglav.json');
+            triglavSpritesheet = loadImage('images/triglav/triglav.png');
+
+            //scenery
+            risingGroundSheet= loadImage('images/scenery/risingGround.png');
+            risingGroundData = loadJSON('data/risingGround.json');
+
+            //symbols
+            symbol1_1 = loadImage('images/util/symbol_detail_1.png');
+            symbol1_2 = loadImage('images/util/symbol_detail_2.png');
+            symbol1_3 = loadImage('images/util/symbol_detail_3.png');
+            symbolx_big = loadImage('images/cursors/symbolx_big.png');
+            symbolx_small = loadImage('images/cursors/symbolx_small.png');
+            embroidery_out = loadImage('images/util/embroidery_out.png');
+            embroidery_in = loadImage('images/util/embroidery_in.png');
+
+            ornament_spritedata = loadJSON('data/ornaments.json');
+            ornament_spritesheet = loadImage('images/util/ornaments.png');
+
+            //scenery
+            risingGroundData = loadJSON('data/risingGround.json');
+            risingGroundSheet = loadImage('images/scenery/risingGround.png');
+
+            //risingDarkness
+            risingDarknessData = loadJSON('data/risingDarkness.json');
+            risingDarknessSheet = loadImage('images/scenery/risingDarkness.png');
+
+            //theVoid
+            theVoidData = loadJSON('data/theVoid.json');
+            theVoidSheet = loadImage('images/scenery/theVoid.png');
+
+            //textures
+            darknessTexture = loadImage('images/scenery/darknessTexture.png');
+
+            //cursors
+            darknessCursor = loadImage('images/cursors/darknessCursor.png');
+
+            //words
+            close = loadImage('images/util/close.png');
+            almost = loadImage('images/util/almost.png');
+            instructions = loadImage('images/util/instructions.png');
+
+            //filler stuff
+            face1 = loadImage('images/util/face1.png');
+
+            //loading fonts
+            _8bit_regular = loadFont('fonts/8bitOperatorPlus-Regular.ttf');
+            _8bit_bold = loadFont('fonts/8bitOperatorPlus-Bold.ttf');
+            chintzy_black = loadFont('fonts/chintzy.ttf');
+            chinty_white = loadFont('fonts/chintzys.ttf');
+
+        }
+
+        function setup(){
+            createCanvas(windowWidth, windowHeight);
+            fill(0, 102, 153);
+
+            //static sprites
+            darknessCursorSprite = new StaticSprite(darknessCursor, 0,0);
+
+            let triglavFrames = triglavData.frames;
+            let nightFrames = nightData.frames;
+            let ornament_frames = ornament_spritedata.frames;
+            let risingGroundFrames = risingGroundData.frames;
+            let risingDarknessFrames = risingDarknessData.frames;
+            let theVoidFrames = theVoidData.frames;
+
+            pushAnimation(triglavFrames, triglavSpritesheet, triglavAnimation);
+            pushSprites(triglavSprites, triglavAnimation, 400, windowHeight-150, 0.1, false);
+            
+            pushAnimation(nightFrames, nightSpritesheet, nightAnimation);
+            pushSprites(nightSprites, nightAnimation, 350, 50, 0.1, false);
+            
+            pushAnimation(ornament_frames, ornament_spritesheet, ornament_animation);
+            pushSprites(ornament_sprites, ornament_animation, windowWidth/2, windowHeight/2, 0.1, false);
+
+            pushAnimation(risingGroundFrames, risingGroundSheet, risingGroundAnimation);
+            pushSprites(risingGroundSprites, risingGroundAnimation, 20, windowHeight-150, 0.1, false);
+            
+            pushAnimation(risingDarknessFrames, risingDarknessSheet, risingDarknessAnimation);
+            pushSprites(risingDarknessSprites, risingDarknessAnimation, windowWidth/2, windowHeight/2, 0.1, false);
+
+            pushAnimation(theVoidFrames, theVoidSheet, theVoidAnimation);
+            pushSprites(theVoidSprites, theVoidAnimation, 600, 100, 0.1, false);
+            
+            // receive a continuous stream of data from the web socket
+            //This creates an infinite loop as long as the socket is a open
+            //the x, y, z values change according to the values from the sensor which are being streamed in 
+            socket.on('data_array', coors =>{
+                let x = coors[0];
+                let y = coors[1];
+                let z = coors[2];
+
+                if(act0 == true){
+                    noStroke();
+                    fill(217,189,240, 60);
+                    rect(0, 0, 180, 600);
+                    fill(250,170,194,60);
+                    rect(360,0,300,600);
+                    symbol_coordinate2 = map(coors[1], -0.2,1,height, 100);
+                    triglavInitialPos = symbol_coordinate2;
+
+                    image(symbol1_2,20, symbol_coordinate2, 120,120);
+
+                    //let symbol_coordinate1 = map(coors[0], -1,1,height,100);
+                    let symbol_coordinate1 = 100;
+                    image(symbol1_1,20, symbol_coordinate1, 120, 120);
+
+                    image(instructions,10,10);
+
+                
+                    if(abs(symbol_coordinate1 - symbol_coordinate2)<50){
+                            let finalPos = symbol_coordinate2;
+                            finalSymbolPos = finalPos;
+                            triglavFinalPos = finalPos;
+                            console.log("Matched symbol!");
+                            image(close, 300, 450);
+                            node0 = true;
+                    }
+                
+                
+                    for(let sprite of triglavSprites){
+                        let mapped_speed = map(coors[1],-1,1,0.00001,0.2);
+                        triglavInitialPos = symbol_coordinate2;
+                        sprite.speed = mapped_speed; 
+                        sprite.show();
+                        sprite.animate();
+
+                        if(node0==true){
+                            sprite.y = 50;
+                        }else{
+                            sprite.y = triglavInitialPos;
+                        }
+                    }
+            
+                    let index = map(coors[1],0.2,1,0,risingGroundSprites.length-1);
+                    if(index <0){
+                        index =0;
+                    }
+                    if(index >risingGroundSprites.length-1){
+                        index =risingGroundSprites.length-1;
+                    }
+                    console.log(index);
+                    console.log(int(index));
+                    image(risingGroundAnimation[int(index)],80,windowHeight-250);
+
+                    //Add narrative text here
+                    let text1 = "triglav, the three headed god of war and pestilence, rises out of the concrete. "
+                    textFont(chintzy_black);
+                    textSize(32);
+                    fill(51, 0, 38)
+                    text(text1, 400, 10, 500, 200);
+            
+                    if(node0 == true){
+                        voidBoundaryX = 820;
+                        voidBoundaryY= 70;
+                        for(let sprite of theVoidSprites){
+                            sprite.x = 800;
+                            sprite.y = 50;
+                            sprite.show();
+                            sprite.animate();
+                        }
+
+                        darknessCursorSprite.x = map(coors[0],-1,1,0,windowWidth);
+                        darknessCursorSprite.y = map(coors[1],-1,1,0,windowHeight);
+                        darknessCursorSprite.show();
+
+                        if((darknessCursorSprite.x > (voidBoundaryX+40)) && (darknessCursorSprite.x < (voidBoundaryX + 260)) && (darknessCursorSprite.y > (voidBoundaryY+40)) && (darknessCursorSprite.y < (voidBoundaryY +220))){
+                            act0 = false;
+                            node0 = false;
+                            act1 = true;
+                        }
+
+                        let text2 = "triglav reaches into the glimmering void and pulls out the night."
+                        textFont(chintzy_black);
+                        textSize(32);
+                        fill(102, 0, 102);
+                        text(text2, 600, 400, 400, 300);
+                    }
+            }
+
+            if(act1 == true && act0 == false){
+                fill(204,255,255, 40);
+                rect(0, windowHeight-170, windowWidth, 170);
+                let index = map(coors[0],0.03,-1,0.03,risingDarknessSprites.length-1);
+                if(index <0){
+                    index =0;
+                }
+                if(index >risingGroundSprites.length-1){
+                    index =risingGroundSprites.length-1;
+                }
+                image(risingDarknessAnimation[int(index)],10,-60);
+
+                //add interaction with symbols
+                symbol_coordinate2 = map(coors[0], -0.6,0,60, windowWidth-300);
+
+                image(symbolx_small,symbol_coordinate2, windowHeight-170);
+
+                let symbol_coordinate1 = windowHeight-170;
+                image(symbolx_big,60, symbol_coordinate1);
+
+                image(instructions,10,10);
+
+                if(abs(60 - symbol_coordinate2)<50){
+                    let finalPos = symbol_coordinate2;
+                    finalSymbolPos = finalPos;
+                    console.log("Matched symbol!");
+                    image(close, 300, 450);
+                    darknessTextureCounter++;
+                    let randWidth = random(0,900);
+                    let randHeight = random(0,600);
+                    console.log(darknessTextureCounter)
+                    console.log(randWidth);
+                    console.log(randHeight);
+                    image(darknessTexture, randWidth, randHeight);
+                    let text3 = "Night pours from the void and brings the era of modernity"
+                    textFont(chintzy_black);
+                    textSize(32);
+                    fill(102, 255, 204);
+                    text(text3, 600, 400, 400, 300);
+                    if(darknessTextureCounter>500){
+                        node1 = true;
+                    }
+                   
+                    //now invite the spirit of darkness to come down
+                }
+
+                //text3 area
+             
+                //node1
+                if(node1 == true){
+                    for(let sprite of nightSprites){
+                        let mapped_speed = map(coors[0],-1,1,0.00001,0.2);
+                        sprite.speed = mapped_speed; 
+                        sprite.show();
+                        sprite.animate();
+                        socket.emit('speed', mapped_speed );
+                        node2 = true;
+                    }
+                }
+
+                if(node2 == true){
+                    embroideryOutX = 20;
+                    embroideryOutY = 20;
+                    image(embroidery_out, embroideryOutX, embroideryOutY);
+
+                    embroideryInX = 20;
+                    embroideryInY = map(coors[1], -0.2,1, windowHeight, embroideryOutY);
+                    image(embroidery_in,embroideryInX, embroideryInY);
+                    console.log("embroideryInY: " + embroideryInY);
+
+                    if(abs(embroideryOutY - embroideryInY)<50){
+                        node0 = false;
+                        node1 = false;
+                        node2 = false;
+                        act0 = true;
+                        act1 =false;
+                        
+                        //resetting a bunch of sprite positions
+                        triglavInitialPos = map(coors[1], -0.2,1,windowHeight, 100);;
+
+                        //moving the darkness cursor offscreen
+                        darknessCursorSprite.x = 2000;
+                        darknessCursorSprite.y = 2000;
+                        voidBoundaryX = 2000;
+                        voidBoundaryY = 2000;
+
+                        darknessTextureCounter= 0;
+                }
+                
+
+                }
+
+              
+            }
+
+
+               
+            });
+
+            
+     
+        }
+
+        function draw(){
+            
+            
+
+
+        }
+
+    </script>
+</body>
+</html>
